@@ -163,7 +163,6 @@ int main() {
 		
 		//update ball position here
 		ball += ballVelocity * dt;
-
 		
 		//paddle collision with ball (it's a little screwey
 		if (paddle1.x < ball.x + 0.125f && paddle1.x + 0.5f > ball.x &&
@@ -195,13 +194,16 @@ int main() {
 			std::cout << score1 << " - " << score2 << std::endl;
 		}
 
-
 		TTK::Graphics::DrawCube(paddle1, 1.0f, white);
 		TTK::Graphics::DrawCube(paddle2, 1.0f, white);
 		TTK::Graphics::DrawCube(ball, 0.25f, white);
 
 		//this next bit is the bar in the middle of the screen
 		TTK::Graphics::DrawLine(glm::vec3(0.0f, 8.0f, 0.0f), glm::vec3(0.0f, -8.0f, 0.0f), white);
+
+		//UI that doesn't print
+		TTK::Graphics::DrawText2D(std::to_string(score1), -2.0f, 2.0f, 16.0f);
+		TTK::Graphics::DrawText2D(std::to_string(score2), 2.0f, 2.0f, 16.0f);
 
 		//// Update Audio Engine
 		audioEngine.Update();
